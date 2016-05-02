@@ -98,3 +98,44 @@ print("soldier's weapon: \(soldier.weapon)")
 print("archer's steal weapons: \(archer.stealWeapons)")
 ```
 ![192.png](img/192.png)
+
+- `p.200`: protocol extension
+```{swift}
+// extension is a way to add default implementation to the protocol
+import Foundation
+
+protocol Flier {
+    //add this line to enable polymophism.
+    // func fly() 
+}
+
+extension Flier {
+
+    func fly(){
+        print("flap flap flap")
+    }
+}
+
+struct Bird: Flier {}
+let b = Bird()
+b.fly()
+
+struct Insect: Flier {
+    func fly(){
+        print("whirr")
+    }
+}
+
+let bug = Insect()
+bug.fly()
+
+let f:Flier = Insect() 
+f.fly() // note that is need not to be polymophic (depand on declairation of the protocol)
+```
+no `fly` declairation in the protocol: 
+<br/>
+![no-polymorph](img/no-polymorph.png)
+
+declare `fly` in the protocol:
+<br/>
+![polymorph](img/polymorph.png)
